@@ -2671,6 +2671,16 @@ parameters:
 			path: app/Module/RecentChangesModule.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$record\\.$#"
+			count: 2
+			path: app/Module/RecentChangesModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$time\\.$#"
+			count: 4
+			path: app/Module/RecentChangesModule.php
+
+		-
 			message: "#^Access to an undefined property object\\:\\:\\$user_id\\.$#"
 			count: 1
 			path: app/Module/RecentChangesModule.php
@@ -2891,6 +2901,26 @@ parameters:
 			path: app/Module/StatcounterModule.php
 
 		-
+			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
+			count: 6
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$d_gid\\.$#"
+			count: 6
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$f_numchil\\.$#"
+			count: 2
+			path: app/Module/StatisticsChartModule.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
+			count: 2
+			path: app/Module/StatisticsChartModule.php
+
+		-
 			message: "#^Binary operation \"\\+\" between int and int\\|string results in an error\\.$#"
 			count: 1
 			path: app/Module/StatisticsChartModule.php
@@ -2901,7 +2931,7 @@ parameters:
 			path: app/Module/StatisticsChartModule.php
 
 		-
-			message: "#^Binary operation \"/\" between stdClass and 365\\.25 results in an error\\.$#"
+			message: "#^Binary operation \"/\" between object and 365\\.25 results in an error\\.$#"
 			count: 3
 			path: app/Module/StatisticsChartModule.php
 
@@ -4581,7 +4611,7 @@ parameters:
 			path: app/Site.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsAgeQuery\\(\\) should return array\\<array\\<stdClass\\>\\> but returns array\\<stdClass\\>\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\:\\:statsAgeQuery\\(\\) should return array\\<array\\<object\\>\\> but returns array\\<object\\>\\.$#"
 			count: 1
 			path: app/Statistics.php
 
@@ -4597,17 +4627,17 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$sex\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartAge.php
 
 		-
@@ -4627,12 +4657,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartBirth.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartBirth.php
 
 		-
@@ -4642,12 +4672,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartChildren.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartChildren.php
 
 		-
@@ -4657,12 +4687,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDeath.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDeath.php
 
 		-
@@ -4682,12 +4712,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartDivorce.php
 
 		-
@@ -4712,12 +4742,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriage.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$total\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriage.php
 
 		-
@@ -4727,17 +4757,17 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$century\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$sex\\.$#"
-			count: 1
+			count: 2
 			path: app/Statistics/Google/ChartMarriageAge.php
 
 		-
@@ -4847,7 +4877,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property object\\:\\:\\$age\\.$#"
-			count: 3
+			count: 5
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
@@ -4956,7 +4986,7 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:statsChildrenQuery\\(\\) should return array\\<stdClass\\> but returns array\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\FamilyRepository\\:\\:statsChildrenQuery\\(\\) should return array\\<object\\> but returns array\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
@@ -4966,7 +4996,7 @@ parameters:
 			path: app/Statistics/Repository/FamilyRepository.php
 
 		-
-			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: stdClass, Closure\\(stdClass\\)\\: stdClass given\\.$#"
+			message: "#^Parameter \\#1 \\$callback of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:map\\(\\) expects callable\\(mixed, int\\|string\\)\\: object, Closure\\(object\\)\\: object given\\.$#"
 			count: 1
 			path: app/Statistics/Repository/FamilyRepository.php
 
@@ -5101,7 +5131,7 @@ parameters:
 			path: app/Statistics/Repository/IndividualRepository.php
 
 		-
-			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:statsAgeQuery\\(\\) should return array\\<stdClass\\> but returns array\\.$#"
+			message: "#^Method Fisharebest\\\\Webtrees\\\\Statistics\\\\Repository\\\\IndividualRepository\\:\\:statsAgeQuery\\(\\) should return array\\<object\\> but returns array\\.$#"
 			count: 1
 			path: app/Statistics/Repository/IndividualRepository.php
 
