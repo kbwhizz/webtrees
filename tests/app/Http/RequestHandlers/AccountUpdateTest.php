@@ -39,11 +39,11 @@ class AccountUpdateTest extends TestCase
         $user->expects($this->once())->method('setPassword')->with('e');
         $user->expects($this->once())->method('setRealName')->with('d');
         $user->expects($this->once())->method('setUserName')->with('h');
-	$user->expects($this->once())->method('setSecret')->with('j');
+        $user->expects($this->once())->method('setSecret')->with('j');
         $user->expects(self::exactly(5))
             ->method('setPreference')
             ->with(
-                self::withConsecutive([UserInterface::PREF_CONTACT_METHOD, UserInterface::PREF_LANGUAGE, UserInterface::PREF_TIME_ZONE, UserInterface::PREF_IS_VISIBLE_ONLINE]),
+                self::withConsecutive([UserInterface::PREF_CONTACT_METHOD, UserInterface::PREF_LANGUAGE, UserInterface::PREF_TIME_ZONE, UserInterface::PREF_IS_VISIBLE_ONLINE, UserInterface::PREF_IS_STATUS_MFA]),
                 self::withConsecutive(['a', 'c', 'g', '', ''])
             );
 
@@ -63,9 +63,9 @@ class AccountUpdateTest extends TestCase
                 'default-xref'   => 'f',
                 'timezone'       => 'g',
                 'user_name'      => 'h',
-		'visible-online' => 'i',
-		'secret'         => 'j',
-		'status-mfa'     => 'k',
+                'visible-online' => 'i',
+                'secret'         => 'j',
+                'status-mfa'     => 'k',
             ]);
         $response = $handler->handle($request);
 
