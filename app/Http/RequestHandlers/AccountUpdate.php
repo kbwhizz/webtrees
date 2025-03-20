@@ -71,7 +71,7 @@ class AccountUpdate implements RequestHandlerInterface
         $time_zone      = Validator::parsedBody($request)->string('timezone');
         $user_name      = Validator::parsedBody($request)->string('user_name');
         $visible_online = Validator::parsedBody($request)->boolean('visible-online', false);
-        $status_mfa = Validator::parsedBody($request)->boolean('status-mfa', '0');
+        $status_mfa     = Validator::parsedBody($request)->boolean('status-mfa', false);
 
         // Change the password
         if ($password !== '') {
