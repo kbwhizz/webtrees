@@ -277,7 +277,6 @@ class User implements UserInterface
 
         return $this;
     }
-   
       /**
       * Validate a supplied 2fa code
       *
@@ -285,17 +284,17 @@ class User implements UserInterface
       *
       * @return bool
       */
-     public function check2facode(string $code2fa): bool
-     {
-         $secret = DB::table('user')
-             ->where('user_id', '=', $this->id())
-             ->value('secret');
-       $google2fa = new Google2FA;
-         if($google2fa->verifyKey($secret, $code2fa)) {
-                  return true;
-               }
-         return false;
-     }
+    public function check2facode(string $code2fa): bool
+    {
+        $secret = DB::table('user')
+            ->where('user_id', '=', $this->id())
+            ->value('secret');
+        $google2fa = new Google2FA;
+        if ($google2fa->verifyKey($secret, $code2fa)) {
+                return true;
+        }
+        return false;
+    }
 
     /**
      * A closure which will create an object from a database row.
