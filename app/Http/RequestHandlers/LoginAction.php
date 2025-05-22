@@ -110,7 +110,7 @@ class LoginAction implements RequestHandlerInterface
             }
             return redirect(route($loginclass, [
                 'tree'     => $tree?->name(),
-                'username' => $username,           
+                'username' => $username,
                 'url'      => $url,
             ]));
         }
