@@ -79,7 +79,7 @@ class LoginAction implements RequestHandlerInterface
             if ($loginstage == "1") {
                 $mfastatus = $this->doLogin($username, $password);
             } else {
-                if ($mfastatus == "1") {  
+                if ($mfastatus == "1") {
                     $mfasuccess = $this->doLoginMfa($username, $code2fa);
                 }
             }
@@ -110,10 +110,9 @@ class LoginAction implements RequestHandlerInterface
             }
             return redirect(route($loginclass, [
                 'tree'     => $tree?->name(),
-                'username' => $username,                
+                'username' => $username,           
                 'url'      => $url,
             ]));
-            
         }
     }
 
