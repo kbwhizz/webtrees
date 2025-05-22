@@ -68,22 +68,21 @@ class LoginAction implements RequestHandlerInterface
         $tree        = Validator::attributes($request)->treeOptional();
         $default_url = route(HomePage::class);
         $username    = Validator::parsedBody($request)->string('username');
-        $password    = Validator::parsedBody($request)->string('password','');
+        $password    = Validator::parsedBody($request)->string('password', '');
         $loginstage    = Validator::parsedBody($request)->string('loginstage', '1');
-        $code2fa     = Validator::parsedBody($request)->string('code2fa','');        
-        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);        
-        $mfastatus   = Validator::parsedBody($request)->string('mfastatus','0');
-        $mfasuccess   = Validator::parsedBody($request)->string('mfasuccess','0');
+        $code2fa     = Validator::parsedBody($request)->string('code2fa','');       
+        $url         = Validator::parsedBody($request)->isLocalUrl()->string('url', $default_url);
+        $mfastatus   = Validator::parsedBody($request)->string('mfastatus', '0');
+        $mfasuccess   = Validator::parsedBody($request)->string('mfasuccess', '0');
 
         try {
-            if($loginstage == "1") {
-              $mfastatus = $this->doLogin($username, $password);           
-            }
-            else {
-              if($mfastatus == "1") {  
-                 $mfasuccess = $this->doLogin_mfa($username, $code2fa);             
-              }              
-            }            
+            if ($loginstage == "1") {
+                $mfastatus = $this->doLogin($username, $password);
+            } else {
+              if ($mfastatus == "1") {  
+                  $mfasuccess = $this->doLogin_mfa($username, $code2fa);
+              }
+            }          
 
             if (Auth::isAdmin() && $this->upgrade_service->isUpgradeAvailable()) {
                 FlashMessages::addMessage(I18N::translate('A new version of webtrees is available.') . ' <a class="alert-link" href="' . e(route(UpgradeWizardPage::class)) . '">' . I18N::translate('Upgrade to webtrees %s.', '<span dir="ltr">' . $this->upgrade_service->latestVersion() . '</span>') . '</a>');
@@ -91,14 +90,13 @@ class LoginAction implements RequestHandlerInterface
 
             
             # Show the mfa page
-            if($mfastatus == "1" && $mfasuccess == "0") {
+            if ($mfastatus == "1" && $mfasuccess == "0") {
                 return redirect(route(LoginPageMfa::class, [
                     'tree'     => $tree?->name(),
                     'username' => $username,                
                     'url'      => $url,
                 ]));
-            }
-            else {
+            } else {
                 $this->completeLogin($username);
                 // Redirect to the target URL
                 return redirect($url);
@@ -107,10 +105,9 @@ class LoginAction implements RequestHandlerInterface
         } catch (Exception $ex) {
             // Failed to log in.
             FlashMessages::addMessage($ex->getMessage(), 'danger');  
-            if($loginstage == "2") {          
+            if ($loginstage == "2") {          
                 $loginclass = LoginPageMfa::class;
-            }
-            else {
+            } else {
                 $loginclass = LoginPage::class;
             }
              
@@ -163,8 +160,7 @@ class LoginAction implements RequestHandlerInterface
         if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) == "1" && Site::getPreference('SHOW_2FA_OPTION')) {
            # MFA switched on for site and has been enabled by user
            return "1";
-        }
-        else {
+        } else {
            return "0";
         }
     }
