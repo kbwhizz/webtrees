@@ -76,10 +76,10 @@ class LoginAction implements RequestHandlerInterface
         $mfasuccess   = Validator::parsedBody($request)->string('mfasuccess', '0');
 
         try {
-            if ($loginstage == "1") {
+            if ($loginstage === "1") {
                 $mfastatus = $this->doLogin($username, $password);
             } else {
-                if ($mfastatus == "1") {
+                if ($mfastatus === "1") {
                     $mfasuccess = $this->doLoginMfa($username, $code2fa);
                 }
             }
@@ -89,7 +89,7 @@ class LoginAction implements RequestHandlerInterface
             }
 
             # Show the mfa page
-            if ($mfastatus == "1" && $mfasuccess == "0") {
+            if ($mfastatus === "1" && $mfasuccess === "0") {
                 return redirect(route(LoginPageMfa::class, [
                     'tree'     => $tree?->name(),
                     'username' => $username,
@@ -103,7 +103,7 @@ class LoginAction implements RequestHandlerInterface
         } catch (Exception $ex) {
             // Failed to log in.
             FlashMessages::addMessage($ex->getMessage(), 'danger');
-            if ($loginstage == "2") {
+            if ($loginstage === "2") {
                 $loginclass = LoginPageMfa::class;
             } else {
                 $loginclass = LoginPage::class;
@@ -153,7 +153,7 @@ class LoginAction implements RequestHandlerInterface
             Log::addAuthenticationLog('Login failed (not approved by admin): ' . $username);
             throw new Exception(I18N::translate('This account has not been approved. Please wait for an administrator to approve it.'));
         }
-        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) == "1" && Site::getPreference('SHOW_2FA_OPTION')) {
+        if ($user->getPreference(UserInterface::PREF_IS_STATUS_MFA) === "1" && Site::getPreference('SHOW_2FA_OPTION')) {
             # MFA switched on for site and has been enabled by user
             return "1";
         } else {
@@ -173,8 +173,12 @@ class LoginAction implements RequestHandlerInterface
 
     private function doLoginMfa(string $username, string $code2fa): string
     {
-        if ($code2fa != '') {
+        if ($code2fa !== '') {
             $user = $this->user_service->findByIdentifier($username);
+            if ($user === null) {
+                Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
+                throw new Exception(I18N::translate('The username or password is incorrect.'));
+            }
             if (!$user->check2FAcode($code2fa)) {
                 throw new Exception(I18N::translate('2FA code does not match. Please try again.'));
             }
@@ -195,6 +199,10 @@ class LoginAction implements RequestHandlerInterface
     private function completeLogin(string $username): void
     {
         $user = $this->user_service->findByIdentifier($username);
+        if ($user === null) {
+            Log::addAuthenticationLog('Login failed (no such user/email): ' . $username);
+            throw new Exception(I18N::translate('The username or password is incorrect.'));
+        }
         Auth::login($user);
         Log::addAuthenticationLog('Login: ' . Auth::user()->userName() . '/' . Auth::user()->realName());
         Auth::user()->setPreference(UserInterface::PREF_TIMESTAMP_ACTIVE, (string) time());
