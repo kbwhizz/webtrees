@@ -77,9 +77,20 @@ class GuestUser implements UserInterface
      *
      * @return string
      */
+    
     public function userName(): string
     {
         return '';
+    }
+
+    /**
+     * Generate a QR code image based on MFA secret and return both.
+     *
+     * @return array<mixed>
+     */
+    public function genQRcode(): array
+    {
+	return '';   
     }
 
     /**
