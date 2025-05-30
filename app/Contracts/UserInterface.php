@@ -74,12 +74,6 @@ interface UserInterface
      */
     public function realName(): string;
     /**
-     * Generate a QR code image based on MFA secret and return both.
-     *
-     * @return array<mixed>
-     */
-    public function genQRcode(): array;
-    /**
      * The user‘s login name.
      *
      * @return string
