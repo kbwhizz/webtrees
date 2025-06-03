@@ -51,7 +51,7 @@ class QrcodeService
         $qrinfo = array();
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
-        $data = 'otpauth://totp/' . (string)$user->user_id . '?secret=' . (string)$qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
+        $data = 'otpauth://totp/' . (string)$user->id() . '?secret=' . (string)$qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
         $qrinfo['qrcode'] = (new QRCode())->render($data);
         return $qrinfo;
     }
