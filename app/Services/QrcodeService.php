@@ -43,7 +43,7 @@ class QrcodeService
      * Generate a QR code image based on 2FA secret and return both.
      *
      * @param UserInterface   $user
-     * @return array
+     * @return string[] 
      */
 
     public function genQRcode(UserInterface $user): array
