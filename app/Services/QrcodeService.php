@@ -43,7 +43,7 @@ class QrcodeService
      * Generate a QR code image based on 2FA secret and return both.
      *
      * @param UserInterface   $user
-     * @return mixed[]
+     * @return array
      */
 
     public function genQRcode(UserInterface $user): array
@@ -51,7 +51,7 @@ class QrcodeService
         $qrinfo = array();
         $google2fa = new Google2FA();
         $qrinfo['secret'] = $google2fa->generateSecretKey();
-        $data = 'otpauth://totp/' . (string)$user->id() . '?secret=' . (string)$qrinfo['secret'] . '&issuer=' . $_SERVER['SERVER_NAME'];
+        $data = 'otpauth://totp/' . (string)$user->id() . '?secret=' . (string)$qrinfo['secret'] . '&issuer=' . (string)$_SERVER['SERVER_NAME'];
         $qrinfo['qrcode'] = (new QRCode())->render($data);
         return $qrinfo;
     }
