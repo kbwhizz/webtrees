@@ -22,15 +22,6 @@ namespace Fisharebest\Webtrees\Services;
 use PragmaRX\Google2FA\Google2FA;
 use chillerlan\QRCode\QRCode;
 use Fisharebest\Webtrees\Contracts\UserInterface;
-#use Fisharebest\Webtrees\Registry;
-#use Fisharebest\Webtrees\Session;
-#use Fisharebest\Webtrees\Validator;
-#use Psr\Http\Message\ServerRequestInterface;
-
-#use function assert;
-#use function is_float;
-#use function is_string;
-#use function view;
 
 /**
  * Generate a QR code and secret for user setting up multi-factor authentication.
@@ -53,10 +44,11 @@ class QrcodeService
 	/** @var array{secret: string} $qrinfo */
         $qrinfo['secret'] = $google2fa->generateSecretKey();
 	/** @var string $servername */
-	$servername=$_SERVER['SERVER_NAME'];
+        $servername = $_SERVER['SERVER_NAME'];
         $data = 'otpauth://totp/' . $user->id() . '?secret=' . $qrinfo['secret'] . '&issuer=' . $servername;
         $qrinfo['qrcode'] = (new QRCode())->render($data);
         return $qrinfo;
     }
 
 }
+
